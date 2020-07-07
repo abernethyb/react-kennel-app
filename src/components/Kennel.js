@@ -1,5 +1,6 @@
 import React from "react";
 import AnimalCard from "./animal/AnimalCard";
+import EmployeeCard from "./employee/EmployeeCard";
 import "./Kennel.css";
 
 const Kennel = () => {
@@ -22,6 +23,7 @@ const Kennel = () => {
         <AnimalCard />
         <AnimalCard />
       </div>
+      <div><EmployeeCard /></div>
     </div>
   );
 };
