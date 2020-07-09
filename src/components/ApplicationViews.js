@@ -5,7 +5,7 @@ import AnimalList from "./animal/AnimalList";
 //only include these once they are built - previous practice exercise
 import LocationCard from "./location/LocationCard";
 import EmployeeList from "./employee/EmployeeList";
-import OwnerCard from "./owner/OwnerCard";
+import OwnerList from "./owner/OwnerList";
 
 const ApplicationViews = () => {
   return (
@@ -31,7 +31,7 @@ const ApplicationViews = () => {
       <Route
         path="/owners"
         render={props => {
-          return <OwnerCard />;
+          return <OwnerList />;
         }}
       />
       <Route

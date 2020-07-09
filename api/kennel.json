@@ -20,17 +20,17 @@
         {
             "id": 1,
             "name": "oodles",
-            "title": "Head Caretaker"
+            "locationId": 1
         },
         {
             "id": 2,
             "name": "noodles",
-            "title": "Night Shift"
+            "locationId": 2
         },
         {
             "id": 3,
             "name": "poodles",
-            "title": "Front Desk Attendant"
+            "locationId": 3
         }
     ],
     "owners": [

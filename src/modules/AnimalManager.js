@@ -12,9 +12,9 @@ export default {
     return fetch(`${remoteURL}/locations`).then(result => result.json())
   },
   getAllOwners() {
-    return fetch(`${remoteURL}/Owners`).then(result => result.json())
+    return fetch(`${remoteURL}/Owners?_expand=animal`).then(result => result.json())
   },
   getAllEmployees() {
-    return fetch(`${remoteURL}/employees`).then(result => result.json())
+    return fetch(`${remoteURL}/employees?_expand=location`).then(result => result.json())
   },
 }
