@@ -1,30 +1,30 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
-import AnimalCard from './AnimalCard';
+import EmployeeCard from './EmployeeCard';
 import AnimalManager from '../../modules/AnimalManager';
 
-const AnimalList = () => {
+const EmployeeList = () => {
   // The initial state is an empty array
-  const [animals, setAnimals] = useState([]);
+  const [employees, setEmployees] = useState([]);
 
-  const getAnimals = () => {
+  const getEmployees = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
-    return AnimalManager.getAllAnimals().then(animalsFromAPI => {
-      setAnimals(animalsFromAPI)
+    return AnimalManager.getAllEmployees().then(employeesFromAPI => {
+        setEmployees(employeesFromAPI)
     });
   };
 
   // got the animals from the API on the component's first render
   useEffect(() => {
-    getAnimals();
+    getEmployees();
   }, []);
 
   // Finally we use map() to "loop over" the animals array to show a list of animal cards
   return (
     <div className="container-cards">
-      {animals.map(animal => <AnimalCard key={animal.id} animal={animal}/>)}
+      {employees.map(employee => <EmployeeCard key={employee.id} employee={employee}/>)}
     </div>
   );
 };
-export default AnimalList
+export default EmployeeList

@@ -4,7 +4,7 @@ import Home from "./home/Home";
 import AnimalList from "./animal/AnimalList";
 //only include these once they are built - previous practice exercise
 import LocationCard from "./location/LocationCard";
-import EmployeeCard from "./employee/EmployeeCard";
+import EmployeeList from "./employee/EmployeeList";
 import OwnerCard from "./owner/OwnerCard";
 
 const ApplicationViews = () => {
@@ -37,7 +37,7 @@ const ApplicationViews = () => {
       <Route
         path="/employees"
         render={props => {
-          return <EmployeeCard />;
+          return <EmployeeList />;
         }}
       />
     </React.Fragment>

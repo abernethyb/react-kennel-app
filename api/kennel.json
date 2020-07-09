@@ -15,5 +15,56 @@
             "name": "Esme",
             "breed": "Pitbull"
         }
+    ],
+    "employees": [
+        {
+            "id": 1,
+            "name": "oodles",
+            "title": "Head Caretaker"
+        },
+        {
+            "id": 2,
+            "name": "noodles",
+            "title": "Night Shift"
+        },
+        {
+            "id": 3,
+            "name": "poodles",
+            "title": "Front Desk Attendant"
+        }
+    ],
+    "owners": [
+        {
+            "id": 1,
+            "name": "Cheezepuff",
+            "animalId": 1
+        },
+        {
+            "id": 2,
+            "name": "Cheezepuff again",
+            "animalId": 2
+        },
+        {
+            "id": 3,
+            "name": "and another Cheezepuff",
+            "animalId": 3
+        }
+    ],
+    "locations": [
+        {
+            "id": 1,
+            "name": "East Nashville",
+            "address": "123 Treeland St"
+        },
+        {
+            "id": 2,
+            "name": "Antioch",
+            "address": "123 aveneue"
+        },
+        {
+            "id": 3,
+            "name": "Hendersonville",
+            "address": "123 st aveneue"
+        }
     ]
 }

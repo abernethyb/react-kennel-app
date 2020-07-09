@@ -5,7 +5,16 @@ export default {
   get(id) {
     return fetch(`${remoteURL}/animals/${id}`).then(result => result.json())
   },
-  getAll() {
+  getAllAnimals() {
     return fetch(`${remoteURL}/animals`).then(result => result.json())
-  }
+  },
+  getAllLocations() {
+    return fetch(`${remoteURL}/locations`).then(result => result.json())
+  },
+  getAllOwners() {
+    return fetch(`${remoteURL}/Owners`).then(result => result.json())
+  },
+  getAllEmployees() {
+    return fetch(`${remoteURL}/employees`).then(result => result.json())
+  },
 }
