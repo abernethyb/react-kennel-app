@@ -7,6 +7,10 @@ export default {
   },
   getAllAnimals() {
     return fetch(`${remoteURL}/animals`).then(result => result.json())
+  },deleteAnimal(id) {
+    return fetch(`${remoteURL}/animals/${id}`, {
+      method: "DELETE"
+    }).then(result => result.json())
   },
   getAllLocations() {
     return fetch(`${remoteURL}/locations`).then(result => result.json())
