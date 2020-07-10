@@ -5,6 +5,9 @@ export default {
   get(id) {
     return fetch(`${remoteURL}/animals/${id}`).then(result => result.json())
   },
+  getSingleLocation(id) {
+    return fetch(`${remoteURL}/locations/${id}`).then(result => result.json())
+  },
   getAllAnimals() {
     return fetch(`${remoteURL}/animals`).then(result => result.json())
   },
