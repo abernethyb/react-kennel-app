@@ -7,13 +7,19 @@ export default {
   },
   getAllAnimals() {
     return fetch(`${remoteURL}/animals`).then(result => result.json())
-  },deleteAnimal(id) {
+  },
+  deleteAnimal(id) {
     return fetch(`${remoteURL}/animals/${id}`, {
       method: "DELETE"
     }).then(result => result.json())
   },
   getAllLocations() {
     return fetch(`${remoteURL}/locations`).then(result => result.json())
+  },
+  deleteLocation(id) {
+    return fetch(`${remoteURL}/locations/${id}`, {
+      method: "DELETE"
+    }).then(result => result.json())
   },
   getAllOwners() {
     return fetch(`${remoteURL}/Owners?_expand=animal`).then(result => result.json())
