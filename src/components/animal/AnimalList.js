@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import AnimalCard from './AnimalCard';
-import DataManager from '../../modules/DataManager';
+import DataManager from '../../modules/APIDatabaseCallManagerBrendan';
 
 const AnimalList = (props) => {
   // The initial state is an empty array
@@ -28,7 +28,7 @@ const AnimalList = (props) => {
   return (
     <>
       <div className="container-cards">
-        {animals.map(animal => <AnimalCard key={animal.id} animal={animal} deleteAnimal={deleteAnimal} />)}
+        {animals.map(animal => <AnimalCard  key={animal.id} animal={animal} deleteAnimal={deleteAnimal} {...props} />)}
       </div>
       <section className="section-content">
         <button type="button"

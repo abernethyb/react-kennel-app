@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataManager from '../../modules/DataManager';
+import DataManager from '../../modules/APIDatabaseCallManagerBrendan';
 import './LocationDetail.css'
 
 const LocationDetail = props => {

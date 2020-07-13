@@ -11,6 +11,7 @@ import AnimalDetail from "./animal/AnimalDetail";
 import LocationDetail from "./location/LocationDetail";
 import Login from "./auth/Login";
 import AnimalForm from './animal/AnimalForm'
+import AnimalEditForm from "./animal/AnimalEditForm"
 
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -39,9 +40,19 @@ const ApplicationViews = () => {
       <Route path="/animals/new" render={(props) => {
         return <AnimalForm {...props} />
       }} />
-      <Route path="/animals/:animalId(\d+)" render={(props) => {
-        // Pass the animalId to the AnimalDetailComponent
-        return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+      <Route exact path="/animals/:animalId(\d+)" render={props => {
+        if (isAuthenticated()) {
+          return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
+      <Route path="/animals/:animalId(\d+)/edit" render={props => {
+        if (isAuthenticated()) {
+          return <AnimalEditForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route
         exact

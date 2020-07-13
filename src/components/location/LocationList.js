@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import LocationCard from './LocationCard';
-import DataManager from '../../modules/DataManager';
+import DataManager from '../../modules/APIDatabaseCallManagerBrendan';
 
 const LocationList = () => {
   // The initial state is an empty array
