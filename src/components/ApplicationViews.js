@@ -10,6 +10,8 @@ import OwnerList from "./owner/OwnerList";
 import AnimalDetail from "./animal/AnimalDetail";
 import LocationDetail from "./location/LocationDetail";
 import Login from "./auth/Login";
+import AnimalForm from './animal/AnimalForm'
+import AnimalEditForm from "./animal/AnimalEditForm"
 
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -20,7 +22,7 @@ const ApplicationViews = () => {
         exact
         path="/"
         render={props => {
-            return <Home {...props} />
+          return <Home {...props} />
         }}
       />
       <Route path="/login" component={Login} />
@@ -35,15 +37,28 @@ const ApplicationViews = () => {
           }
 
         }} />
-      <Route path="/animals/:animalId(\d+)" render={(props) => {
-        // Pass the animalId to the AnimalDetailComponent
-        return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+      <Route path="/animals/new" render={(props) => {
+        return <AnimalForm {...props} />
+      }} />
+      <Route exact path="/animals/:animalId(\d+)" render={props => {
+        if (isAuthenticated()) {
+          return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
+      }} />
+      <Route path="/animals/:animalId(\d+)/edit" render={props => {
+        if (isAuthenticated()) {
+          return <AnimalEditForm {...props} />
+        } else {
+          return <Redirect to="/login" />
+        }
       }} />
       <Route
         exact
         path="/locations"
         render={props => {
-            return <LocationList {...props} />
+          return <LocationList {...props} />
         }}
       />
       <Route path="/locations/:locationId(\d+)" render={(props) => {
@@ -58,7 +73,7 @@ const ApplicationViews = () => {
           } else {
             return <Redirect to="/login" />
           }
-          
+
         }}
       />
       <Route
