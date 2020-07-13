@@ -36,6 +36,9 @@ const ApplicationViews = () => {
           }
 
         }} />
+      <Route path="/animals/new" render={(props) => {
+        return <AnimalForm {...props} />
+      }} />
       <Route path="/animals/:animalId(\d+)" render={(props) => {
         // Pass the animalId to the AnimalDetailComponent
         return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
@@ -72,9 +75,6 @@ const ApplicationViews = () => {
           }
         }}
       />
-      <Route path="/animals/new" render={(props) => {
-        return <AnimalForm {...props} />
-      }} />
     </React.Fragment>
   );
 };
