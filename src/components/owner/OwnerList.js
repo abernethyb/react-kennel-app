@@ -10,7 +10,7 @@ const OwnerList = () => {
   const getOwners = () => {
     // After the data comes back from the API, we
     //  use the setOwners function to update state
-    return AnimalManager.getAllOwners().then(ownersFromAPI => {
+    return AnimalManager.getAll("owners", "animal").then(ownersFromAPI => {
       setOwners(ownersFromAPI)
     });
   };
