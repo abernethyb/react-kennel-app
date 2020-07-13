@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import AnimalManager from '../../modules/AnimalManager';
+import DataManager from '../../modules/DataManager';
 import './LocationDetail.css'
 
 const LocationDetail = props => {
     const [location, setLocation] = useState({ name: "", address: "" });
 
     useEffect(() => {
-        //get(id) from AnimalManager and hang on to the data; put it into state
-        AnimalManager.getSingleLocation(props.locationId)
+        //get(id) from DataManager and hang on to the data; put it into state
+        DataManager.getAny("locations", props.locationId)
             .then(location => {
                 setLocation({
                     name: location.name,

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import EmployeeCard from './EmployeeCard';
-import AnimalManager from '../../modules/AnimalManager';
+import DataManager from '../../modules/DataManager';
 
 const EmployeeList = () => {
   // The initial state is an empty array
@@ -10,7 +10,7 @@ const EmployeeList = () => {
   const getEmployees = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
-    return AnimalManager.getAllEmployees().then(employeesFromAPI => {
+    return DataManager.getAll("employees", "location").then(employeesFromAPI => {
         setEmployees(employeesFromAPI)
     });
   };

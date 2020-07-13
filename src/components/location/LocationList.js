@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import the components we will need
 import LocationCard from './LocationCard';
-import AnimalManager from '../../modules/AnimalManager';
+import DataManager from '../../modules/DataManager';
 
 const LocationList = () => {
   // The initial state is an empty array
@@ -10,7 +10,7 @@ const LocationList = () => {
   const getLocations = () => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
-    return AnimalManager.getAllLocations().then(LocationsFromAPI => {
+    return DataManager.getAll("locations").then(LocationsFromAPI => {
         setLocations(LocationsFromAPI)
     });
   };
