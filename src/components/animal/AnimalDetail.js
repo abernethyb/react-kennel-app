@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AnimalManager from '../../modules/AnimalManager';
+import DataManager from '../../modules/DataManager';
 import './AnimalDetail.css'
 
 const AnimalDetail = props => {
@@ -7,8 +7,8 @@ const AnimalDetail = props => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    //get(id) from AnimalManager and hang on to the data; put it into state
-    AnimalManager.get(props.animalId)
+    //get(id) from DataManager and hang on to the data; put it into state
+    DataManager.getAny("animals", props.animalId)
       .then(animal => {
         setAnimal({
           name: animal.name,
@@ -20,7 +20,7 @@ const AnimalDetail = props => {
   const handleDelete = () => {
     //invoke the delete function in AnimalManger and re-direct to the animal list.
     setIsLoading(true);
-    AnimalManager.deleteAnimal(props.animalId).then(() =>
+    DataManager.delete("animals", props.animalId).then(() =>
       props.history.push("/animals")
     );
   };
