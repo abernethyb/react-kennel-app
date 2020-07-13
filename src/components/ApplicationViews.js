@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import React from "react";
 import Home from "./home/Home";
 import AnimalList from "./animal/AnimalList";
@@ -9,6 +9,9 @@ import LocationList from "./location/LocationList";
 import OwnerList from "./owner/OwnerList";
 import AnimalDetail from "./animal/AnimalDetail";
 import LocationDetail from "./location/LocationDetail";
+import Login from "./auth/Login";
+
+const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
 const ApplicationViews = () => {
   return (
@@ -17,14 +20,20 @@ const ApplicationViews = () => {
         exact
         path="/"
         render={props => {
-          return <Home />;
+            return <Home {...props} />
         }}
       />
+      <Route path="/login" component={Login} />
       <Route
         exact
         path="/animals"
         render={(props) => {
-          return <AnimalList />
+          if (isAuthenticated()) {
+            return <AnimalList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+
         }} />
       <Route path="/animals/:animalId(\d+)" render={(props) => {
         // Pass the animalId to the AnimalDetailComponent
@@ -34,7 +43,7 @@ const ApplicationViews = () => {
         exact
         path="/locations"
         render={props => {
-          return <LocationList />;
+            return <LocationList {...props} />
         }}
       />
       <Route path="/locations/:locationId(\d+)" render={(props) => {
@@ -44,13 +53,22 @@ const ApplicationViews = () => {
       <Route
         path="/owners"
         render={props => {
-          return <OwnerList />;
+          if (isAuthenticated()) {
+            return <OwnerList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
+          
         }}
       />
       <Route
         path="/employees"
         render={props => {
-          return <EmployeeList />;
+          if (isAuthenticated()) {
+            return <EmployeeList {...props} />
+          } else {
+            return <Redirect to="/login" />
+          }
         }}
       />
     </React.Fragment>
