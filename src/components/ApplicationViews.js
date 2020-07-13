@@ -10,6 +10,7 @@ import OwnerList from "./owner/OwnerList";
 import AnimalDetail from "./animal/AnimalDetail";
 import LocationDetail from "./location/LocationDetail";
 import Login from "./auth/Login";
+import AnimalForm from './animal/AnimalForm'
 
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -20,7 +21,7 @@ const ApplicationViews = () => {
         exact
         path="/"
         render={props => {
-            return <Home {...props} />
+          return <Home {...props} />
         }}
       />
       <Route path="/login" component={Login} />
@@ -43,7 +44,7 @@ const ApplicationViews = () => {
         exact
         path="/locations"
         render={props => {
-            return <LocationList {...props} />
+          return <LocationList {...props} />
         }}
       />
       <Route path="/locations/:locationId(\d+)" render={(props) => {
@@ -58,7 +59,7 @@ const ApplicationViews = () => {
           } else {
             return <Redirect to="/login" />
           }
-          
+
         }}
       />
       <Route
@@ -71,6 +72,9 @@ const ApplicationViews = () => {
           }
         }}
       />
+      <Route path="/animals/new" render={(props) => {
+        return <AnimalForm {...props} />
+      }} />
     </React.Fragment>
   );
 };

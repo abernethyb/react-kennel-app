@@ -5,8 +5,17 @@ export default {
   getAny(table, id) {
     return fetch(`${remoteURL}/${table}/${id}`).then(result => result.json())
   },
-  getAll (table, expand) {
+  getAll(table, expand) {
     return fetch(`${remoteURL}/${table}?_expand=${expand}`).then(result => result.json())
+  },
+  addObject(table, newObject) {
+    return fetch(`${remoteURL}/${table}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    }).then(data => data.json())
   },
   delete(table, id) {
     return fetch(`${remoteURL}/${table}/${id}`, {
