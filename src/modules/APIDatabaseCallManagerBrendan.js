@@ -30,5 +30,14 @@ export default {
       },
       body: JSON.stringify(editedAnimal)
     }).then(data => data.json());
+  },
+  getRandomId(table) {
+    return fetch(`${remoteURL}/${table}`)
+      .then(result => result.json())
+      .then(objects => {
+        const randomIndex = Math.floor(Math.random() * objects.length);
+        const randomObject = objects[randomIndex];
+        return randomObject.id;
+    });
   }
 }
