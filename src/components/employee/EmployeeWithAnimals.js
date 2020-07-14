@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import DataManager from '../../modules/APIDatabaseCallManagerBrendan'
 import AnimalCard from '../animal/AnimalCard'
 
+
 const EmployeeWithAnimals = props => {
   const [employee, setEmployee] = useState({});
   const [animals, setAnimals] = useState([]);
@@ -14,6 +15,12 @@ const EmployeeWithAnimals = props => {
         setAnimals(APIResult.animals);
       });
   }, []);
+  const deleteAnimal = id => {
+    DataManager.delete("animals", id)
+      .then(() => DataManager.getAll("animals").then(setAnimals)).then(() =>
+      props.history.push("/employees")
+    );
+  };
 
   return (
     <div className="card">
@@ -22,6 +29,7 @@ const EmployeeWithAnimals = props => {
         <AnimalCard
           key={animal.id}
           animal={animal}
+          deleteAnimal={deleteAnimal}
           {...props}
         />
       )}
