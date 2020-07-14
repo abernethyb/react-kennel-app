@@ -12,6 +12,7 @@ import LocationDetail from "./location/LocationDetail";
 import Login from "./auth/Login";
 import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from "./animal/AnimalEditForm"
+import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
 
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -77,6 +78,7 @@ const ApplicationViews = () => {
         }}
       />
       <Route
+        exact
         path="/employees"
         render={props => {
           if (isAuthenticated()) {
@@ -86,6 +88,9 @@ const ApplicationViews = () => {
           }
         }}
       />
+      <Route path="/employees/:employeeId(\d+)/details" render={(props) => {
+        return <EmployeeWithAnimals {...props} />
+      }} />
     </React.Fragment>
   );
 };

@@ -3,22 +3,26 @@
     {
       "id": 1,
       "name": "Doodles",
-      "breed": "Poodle"
+      "breed": "Poodle",
+      "employeeId": 1
     },
     {
       "id": 2,
       "name": "Deckersdfg",
-      "breed": "German Shepherd"
+      "breed": "German Shepherd",
+      "employeeId": "2"
     },
     {
       "id": 3,
       "name": "Esme",
-      "breed": "Pitbull"
+      "breed": "Pitbull",
+      "employeeId": 3
     },
     {
       "name": "asdfg",
       "breed": "sdfv",
-      "id": 4
+      "id": 4,
+      "employeeId": 2
     }
   ],
   "employees": [

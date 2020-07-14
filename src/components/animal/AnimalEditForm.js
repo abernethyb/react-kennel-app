@@ -3,7 +3,8 @@ import DataManager from "../../modules/APIDatabaseCallManagerBrendan"
 import "./AnimalForm.css"
 
 const AnimalEditForm = props => {
-  const [animal, setAnimal] = useState({ name: "", breed: "" });
+  const [animal, setAnimal] = useState({ name: "", breed: "", employeeId: "" });
+  const [employees, setEmployees] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -20,7 +21,8 @@ const AnimalEditForm = props => {
     const editedAnimal = {
       id: props.match.params.animalId,
       name: animal.name,
-      breed: animal.breed
+      breed: animal.breed,
+      employeeId: animal.employeeId
     };
 
     DataManager.update(editedAnimal)
@@ -30,8 +32,12 @@ const AnimalEditForm = props => {
   useEffect(() => {
     DataManager.getAny("animals", props.match.params.animalId)
       .then(animal => {
-        setAnimal(animal);
-        setIsLoading(false);
+        DataManager.getAll("employees", "location").then(employeesFromApi => {
+          setEmployees(employeesFromApi);
+          setAnimal(animal);
+          setIsLoading(false);
+        })
+
       });
   }, []);
 
@@ -61,6 +67,19 @@ const AnimalEditForm = props => {
             <label htmlFor="breed">Breed</label>
           </div>
           <div className="alignRight">
+            <select
+              className="form-control"
+              id="employeeId"
+              value={animal.employeeId}
+              onChange={handleFieldChange}
+            >
+              {employees.map(employee =>
+                <option key={employee.id} value={employee.id}>
+                  {employee.name}
+                </option>
+              )}
+            </select>
+            <label htmlFor="employeeId">Employee</label>
             <button
               type="button" disabled={isLoading}
               onClick={updateExistingAnimal}

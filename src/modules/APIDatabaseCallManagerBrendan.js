@@ -38,6 +38,10 @@ export default {
         const randomIndex = Math.floor(Math.random() * objects.length);
         const randomObject = objects[randomIndex];
         return randomObject.id;
-    });
+      });
+  },
+  embededGet(table, id, embed) {
+    return fetch(`${remoteURL}/${table}/${id}?_embed=${embed}`)
+      .then(result => result.json())
   }
 }
