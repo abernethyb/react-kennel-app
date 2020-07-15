@@ -9,12 +9,11 @@ const EmployeeCard = (props) => {
           <img src={require("./CirclePerson1.svg")} alt="Employee of the month" />
         </picture>
         <h3>
+          {console.log("props Employee card", props)}
           Name: <span className="card-employeename">{props.employee.name}</span>
         </h3>
-        <p>Works at our {props.employee.location.name} Location</p>
+        {/* <p>Works at our {props.employee.location.name} Location</p> */}
         <button type="button" onClick={() => props.deleteEmployee(props.employee.id)}>Fire</button>
-        <button type="button"
-          onClick={() => { props.history.push(`/employees/${props.employee.id}/details`) }}>Details</button>
       </div>
     </div>
   );
