@@ -15,6 +15,12 @@ const LocationDetail = props => {
                 setEmployees(result.employees)
             });
     }, [props.locationId]);
+    const deleteEmployee = id => {
+        DataManager.delete("employees", id)
+          .then(() => DataManager.getAll("employees", "location").then(setEmployees)).then(() =>
+          props.history.push("/locations")
+        );
+      };
 
     return (
         <div className="card">
@@ -29,6 +35,7 @@ const LocationDetail = props => {
                     <EmployeeCard
                         key={employee.id}
                         employee={employee}
+                        deleteEmployee={deleteEmployee}
                         {...props}
                     />
                 )}
