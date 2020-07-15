@@ -11,7 +11,7 @@ const EmployeeList = (props) => {
     // After the data comes back from the API, we
     //  use the setAnimals function to update state
     return DataManager.getAll("employees", "location").then(employeesFromAPI => {
-        setEmployees(employeesFromAPI)
+      setEmployees(employeesFromAPI)
     });
   };
   const deleteEmployee = id => {
@@ -28,6 +28,13 @@ const EmployeeList = (props) => {
   return (
     <div className="container-cards">
       {employees.map(employee => <EmployeeCard key={employee.id} employee={employee} deleteEmployee={deleteEmployee} {...props} />)}
+      <section className="section-content">
+        <button type="button"
+          className="btn"
+          onClick={() => { props.history.push("/employees/new") }}>
+            Add New Employee
+        </button>
+      </section>
     </div>
   );
 };

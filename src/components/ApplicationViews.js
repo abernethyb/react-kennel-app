@@ -13,6 +13,7 @@ import Login from "./auth/Login";
 import AnimalForm from './animal/AnimalForm'
 import AnimalEditForm from "./animal/AnimalEditForm"
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
+import EmployeeForm from "./employee/EmployeeForm"
 
 const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
@@ -90,6 +91,9 @@ const ApplicationViews = () => {
       />
       <Route path="/employees/:employeeId(\d+)/details" render={(props) => {
         return <EmployeeWithAnimals {...props} />
+      }} />
+      <Route path="/employees/new" render={(props) => {
+        return <EmployeeForm {...props} />
       }} />
     </React.Fragment>
   );

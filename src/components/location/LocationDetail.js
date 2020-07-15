@@ -17,10 +17,10 @@ const LocationDetail = props => {
     }, [props.locationId]);
     const deleteEmployee = id => {
         DataManager.delete("employees", id)
-          .then(() => DataManager.getAll("employees", "location").then(setEmployees)).then(() =>
-          props.history.push("/locations")
-        );
-      };
+            .then(() => DataManager.getAll("employees", "location").then(setEmployees)).then(() =>
+                props.history.push("/locations")
+            );
+    };
 
     return (
         <div className="card">
@@ -28,16 +28,18 @@ const LocationDetail = props => {
                 <picture>
                     <img src={require('./nashville.jpg')} alt="Nashville" />
                 </picture>
+                
                 <h3>Name: <span style={{ color: 'darkslategrey' }}>{location.name}</span></h3>
                 {/* <p>Address: {location.address}</p> */}
                 {console.log("employees", employees)}
                 {employees.map(employee =>
-                    <EmployeeCard
-                        key={employee.id}
-                        employee={employee}
-                        deleteEmployee={deleteEmployee}
-                        {...props}
-                    />
+                <h3>{employee.name} works here</h3>
+                    // <EmployeeCard
+                    //     key={employee.id}
+                    //     employee={employee}
+                    //     deleteEmployee={deleteEmployee}
+                    //     {...props}
+                    // />
                 )}
 
             </div>
