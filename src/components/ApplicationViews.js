@@ -15,9 +15,13 @@ import AnimalEditForm from "./animal/AnimalEditForm"
 import EmployeeWithAnimals from "./employee/EmployeeWithAnimals"
 import EmployeeForm from "./employee/EmployeeForm"
 
-const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
 
-const ApplicationViews = () => {
+
+const ApplicationViews = (props) => {
+
+  const hasUser = props.hasUser;
+  const setUser = props.setUser;
+
   return (
     <React.Fragment>
       <Route
@@ -27,12 +31,14 @@ const ApplicationViews = () => {
           return <Home {...props} />
         }}
       />
-      <Route path="/login" component={Login} />
+      <Route path="/login" render={props => {
+        return <Login setUser={setUser} {...props} />
+      }} />
       <Route
         exact
         path="/animals"
         render={(props) => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <AnimalList {...props} />
           } else {
             return <Redirect to="/login" />
@@ -43,14 +49,14 @@ const ApplicationViews = () => {
         return <AnimalForm {...props} />
       }} />
       <Route exact path="/animals/:animalId(\d+)" render={props => {
-        if (isAuthenticated()) {
+        if (hasUser) {
           return <AnimalDetail animalId={parseInt(props.match.params.animalId)} {...props} />
         } else {
           return <Redirect to="/login" />
         }
       }} />
       <Route path="/animals/:animalId(\d+)/edit" render={props => {
-        if (isAuthenticated()) {
+        if (hasUser) {
           return <AnimalEditForm {...props} />
         } else {
           return <Redirect to="/login" />
@@ -70,7 +76,7 @@ const ApplicationViews = () => {
       <Route
         path="/owners"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <OwnerList {...props} />
           } else {
             return <Redirect to="/login" />
@@ -82,7 +88,7 @@ const ApplicationViews = () => {
         exact
         path="/employees"
         render={props => {
-          if (isAuthenticated()) {
+          if (hasUser) {
             return <EmployeeList {...props} />
           } else {
             return <Redirect to="/login" />
