@@ -21,6 +21,7 @@ const EmployeeWithAnimals = props => {
                 props.history.push("/employees")
             );
     };
+    
 
     return (
         <div className="card">

@@ -3,7 +3,7 @@ import DataManager from '../../modules/APIDatabaseCallManagerBrendan';
 import './EmployeeForm.css'
 
 const EmployeeForm = props => {
-    const [employee, setemployee] = useState({ name: "" });
+    const [employee, setemployee] = useState({ name: "", locationId: ""});
     const [locations, setLocations] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -12,13 +12,16 @@ const EmployeeForm = props => {
         stateToChange[evt.target.id] = evt.target.value;
         setemployee(stateToChange);
     };
+    DataManager.getAll("locations").then(result => {
+        setLocations(result)
+    })
 
     /*  Local method for validation, set loadingStatus, create employee      object, invoke the DataManager post method, and redirect to the full employee list
     */
     const constructNEwemployee = evt => {
         evt.preventDefault();
-        if (employee.name === "") {
-            window.alert("Please input an employee name and breed");
+        if (employee.name === "" || employee.locationId === "") {
+            window.alert("Please fill out every field");
         } else {
             setIsLoading(true);
             // Create the employee and redirect user to employee list
@@ -46,13 +49,15 @@ const EmployeeForm = props => {
                         id="locationId"
                         value={employee.locationId}
                         onChange={handleFieldChange}
+                        
                     >
                         {locations.map(location =>
-                            <option key={location.id} value={location.id}>
+                            <option key={location.id} value={location.id} >
                                 {location.name}
                             </option>
                         )}
                     </select>
+                    <label htmlFor="employeeId">Location</label>
                     <div className="alignRight">
                         <button
                             type="button"

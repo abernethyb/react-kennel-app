@@ -40,6 +40,21 @@
       "id": 3,
       "name": "poodles",
       "locationId": 3
+    },
+    {
+      "name": "new Guy",
+      "locationId": "2",
+      "id": 4
+    },
+    {
+      "name": "another new hire",
+      "locationId": "2",
+      "id": 5
+    },
+    {
+      "name": "asdfg",
+      "locationId": "1",
+      "id": 6
     }
   ],
   "owners": [
